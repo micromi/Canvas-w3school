@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-textBaseline</title>
+<body>
+  <div style="width: 450px;margin: 0 auto;">
+    <p>textBaseline 属性设置或返回在绘制文本时的当前文本基线
+    textBaseline="alphabetic|top|hanging|middle|ideographic|bottom";</p>
+    <canvas id="myCanvas" width="400" height="200" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <img src="textBaseline.jpg" height="732" width="710" alt="">
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    //在位置 y=100 绘制蓝色线条
+    ctx.strokeStyle = "blue";
+    ctx.moveTo(5,100);
+    ctx.lineTo(395,100);
+    ctx.stroke();
+
+    ctx.font = "20px Arial"
+
+    //在 y = 200 以不同的 textBaseline 值放置每个单词
+    ctx.textBaseline = "top";
+    ctx.fillText("Top",5,100);
+    ctx.textBaseline = "bottom";
+    ctx.fillText("Bottom",50,100);
+    ctx.textBaseline = "middle";
+    ctx.fillText("Middle",120,100);
+    ctx.textBaseline = "alphabetic";
+    ctx.fillText("Alphabetic",190,100);
+    ctx.textBaseline = "hanging";
+    ctx.fillText("Hanging",290,100);
+
+  </script>
+
+</body>
+</html>

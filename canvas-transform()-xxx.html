@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-transform()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>替换绘图的当前转换矩阵 transform(a,b,c,d,e,f);</p>
+    <p style="color: red;">
+    a 水平缩放绘图;b 水平倾斜绘图;
+    c 垂直倾斜绘图;d 垂直缩放绘图;
+    e 水平移动绘图;f 垂直移动绘图</p>
+    <p style="color: red;">绘制一个矩形；通过 transform() 添加一个新的变换矩阵，再次绘制矩形；
+    <p style="color: red;">注释：该变换只会影响 transform() 方法调用之后的绘图。</p>
+    <p style="color: red;">注释：transform() 方法的行为相对于由 rotate(), scale(), 
+    translate(), or transform() 完成的其他变换。例如：如果您已经将绘图设置为放到两倍，
+    则 transform() 方法会把绘图放大两倍，您的绘图最终将放大四倍。</p>
+    <canvas id="myCanvas" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(0,0,250,100)
+
+    ctx.transform(1,0.5,-0.5,1,30,10);
+    ctx.fillStyle = "red";
+    ctx.fillRect(0,0,250,100);
+
+    ctx.transform(1,0.5,-0.5,1,30,10);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(0,0,250,100);
+
+  </script>
+
+</body>
+</html>

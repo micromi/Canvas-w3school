@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-translate()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>重新映射画布上的 (0,0) 位置 translate(x,y);</p>
+    <p style="color: red;">当您在 translate() 之后调用诸如 fillRect() 之类的方法时，值会添加到 x 和 y 坐标值上</p>
+    <p>在位置 (10,10) 处绘制一个矩形，将新的 (0,0) 位置设置为 (70,70)。再次绘制新的矩形（请注意现在矩形从位置 (80,80) 开始绘制</p>
+    <canvas id="myCanvas" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.fillRect(10,10,100,50);
+    ctx.translate(70,70);
+    ctx.fillStyle = "green";
+    ctx.fillRect(10,10,100,50);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-globalCompositeOperation</title>
+<style>
+  canvas {
+    border:1px solid #d3d3d3;
+    margin-right:10px;
+    margin-bottom:20px; 
+  }
+</style>
+<body>
+  <div style="width: 600px;margin: 0 auto;">
+    <p>globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有）的图像上</p>
+    <p style="color: red;">源图像 = 您打算放置到画布上的绘图</p>
+    <p style="color: red;">目标图像 = 您已经放置在画布上的绘图</p>
+    <p>以下红色矩形是目标图像。蓝色矩形是源图像</p>
+    <canvas id="myCanvas1" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <img src="globalCompositeOperation.jpg" height="593" width="680" alt="">
+
+  </div>
+  <script>
+
+    var c1 = document.getElementById("myCanvas1");
+    var ctx1 = c1.getContext("2d");
+
+    ctx1.fillStyle = "red";
+    ctx1.fillRect(20,20,75,50);
+    ctx1.globalCompositeOperation = "source-over";
+    ctx1.fillStyle = "blue";
+    ctx1.fillRect(50,50,75,50);
+
+    ctx1.fillStyle = "red";
+    ctx1.fillRect(150,20,75,50);
+    ctx1.globalCompositeOperation = "destination-over";
+    ctx1.fillStyle = "blue";
+    ctx1.fillRect(180,50,75,50);
+
+  </script>
+  <script>
+    var gco = new Array();
+    gco.push("source-atop");
+    gco.push("source-in");
+    gco.push("source-out");
+    gco.push("source-over");
+    gco.push("destination-atop");
+    gco.push("destination-in");
+    gco.push("destination-out");
+    gco.push("destination-over");
+    gco.push("lighter");
+    gco.push("copy");
+    gco.push("xor");
+
+    document.write("<div style='width:600px;margin:0 auto;'>");
+
+    for (n = 0;n<gco.length;n++) {
+      document.write("<div id='p_" + n + "' style='display:inline-block;'>" + gco[n] + ":<br>");
+      var c = document.createElement("canvas");
+      c.width = 120;
+      c.height = 100;
+      document.getElementById("p_" + n).appendChild(c);
+      var ctx2 = c.getContext("2d");    
+      ctx2.fillStyle = "blue";
+      ctx2.fillRect(10,10,50,50);
+      ctx2.globalCompositeOperation = gco[n];
+      ctx2.beginPath();
+      ctx2.fillStyle = "red";
+      ctx2.arc(50,50,30,0,2*Math.PI);
+      ctx2.fill();
+      document.write("</div>"); 
+    }
+    document.write("</div>");
+  </script>
+
+</body>
+</html>

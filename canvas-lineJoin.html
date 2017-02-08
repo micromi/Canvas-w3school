@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-lineJoin</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>设置或返回两条线相交时，所创建的拐角类型lineJoin="miter尖角|bevel斜角|round圆角":</p>
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+  </div>
+  <script>
+
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+
+  ctx.beginPath();
+  ctx.lineWidth = 10;
+  ctx.lineJoin = "round";// miter(默认)尖角|bevel斜角|round圆角
+  ctx.moveTo(20, 20);
+  ctx.lineTo(100, 50);
+  ctx.lineTo(20, 100);
+  ctx.stroke();
+
+  </script>
+
+</body>
+</html>

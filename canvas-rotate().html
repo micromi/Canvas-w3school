@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-rotate()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>旋转当前绘图 rotate(angle);</p>
+    <p style="color: red;">translate就是移动中心点的.旋转中心默认是在canvas的左上角；
+    angle  旋转角度，以弧度计。如需将角度转换为弧度，
+    请使用 degrees*Math.PI/180 公式进行计算。举例：如需旋转 5 度，可规定下面的公式：5*Math.PI/180。</p>
+    <canvas id="myCanvas" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.rotate(20*Math.PI/180);
+    ctx.fillRect(50,20,100,50);
+
+  </script>
+
+</body>
+</html>

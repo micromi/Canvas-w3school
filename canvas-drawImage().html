@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-drawImage()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>drawImage() 方法在画布上绘制图像、画布或视频,
+    也能够绘制图像的某些部分，以及/或者增加或减少图像的尺寸</p>
+    <p style="color: red;">提示：如果您需要在文本向画布输出之前，就了解文本的宽度，那么请使用该方法。</p>
+    <p>要使用的图像：</p>
+    <img id="tulip" src="eg_tulip.jpg" alt="The Tulip" />
+
+    <p>1.(在画布上定位图像)</p>
+    <p>画布1：</p>
+    <canvas id="myCanvas1" width="500" height="300" style="border:1px solid #d3d3d3;background:#ffffff;">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>2.(在画布上对图像进行定位，然后规定图像的宽度和高度)</p>
+    <p>画布2：</p>
+    <canvas id="myCanvas2" width="500" height="300" style="border:1px solid #d3d3d3;background:#ffffff;">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>3.(在画布上对图像进行定位，然后规定图像的宽度和高度)</p>
+    <p>画布3：</p>
+    <canvas id="myCanvas3" width="500" height="300" style="border:1px solid #d3d3d3;background:#ffffff;">
+    Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    
+    <p>要使用的视频：</p>
+    <video id="video1" controls width="270" >
+      <source src="mov_bbb.mp4" type='video/mp4'>
+      <source src="mov_bbb.ogg" type='video/ogg'>
+      <source src="mov_bbb.webm" type='video/webm'>
+    </video>
+    <p>4.(放置视频)</p>
+    <p>画布4：画布（每 20 毫秒，代码就会绘制视频的当前帧）</p>
+    <canvas id="myCanvas4" width="270" height="135" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <script>
+    var img = document.getElementById("tulip");
+
+    var c1 = document.getElementById("myCanvas1");
+    var ctx1 = c1.getContext("2d");
+    
+    var c2 = document.getElementById("myCanvas2");
+    var ctx2 = c2.getContext("2d");
+
+    var c3 = document.getElementById("myCanvas3");
+    var ctx3 = c3.getContext("2d");
+
+    img.onload = function(){
+      ctx1.drawImage(img,10,10);
+      ctx2.drawImage(img,10,10,240,160);
+      ctx3.drawImage(img,90,130,90,80,10,10,90,80);
+    }
+    
+
+    var v = document.getElementById("video1");
+    var c4 = document.getElementById("myCanvas4");
+    ctx4 = c4.getContext('2d');
+
+    v.addEventListener('play', function() {var i = window.setInterval(function() {ctx4.drawImage(v,0,0,270,135)},20);},false);
+    v.addEventListener('pause',function() {window.clearInterval(i);},false);
+    v.addEventListener('ended',function() {clearInterval(i);},false);
+
+    </script>
+
+    <img src="drawImage.jpg" height="796" width="542" alt="">
+  </div>
+
+</body>
+</html>

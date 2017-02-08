@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-fillStyle</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    
+    <p>1、color(CSS 颜色值): 默认值是 #000000:</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas1" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>2、线性渐变createLinearGradient(x0,y0,x1,y1):</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas2" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>3、放射状/圆形渐变createRadialGradient(x0,y0,r0,x1,y1,r1):</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas3" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>4、填充绘图的pattern对象createPattern:</p>
+    要用到的图片：<img src="lamp.gif" id="lamp" />
+    <p>Canvas:</p>
+    <canvas id="myCanvas4" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <div>
+      <button onclick="draw('repeat')">Repeat</button> 
+      <button onclick="draw('repeat-x')">Repeat-x</button> 
+      <button onclick="draw('repeat-y')">Repeat-y</button> 
+      <button onclick="draw('no-repeat')">No-repeat</button>
+    </div>
+  </div>
+  
+  <script type="text/javascript">
+  // 1.颜色
+  var c1 = document.getElementById("myCanvas1");
+  var ctx1 = c1.getContext("2d");
+  ctx1.fillStyle = "#ff0000";
+  ctx1.fillRect(20,20,150,100);
+
+  // 2.线性渐变
+  var c2 = document.getElementById("myCanvas2");
+  var ctx2 = c2.getContext("2d");
+  var my_gradient = ctx2.createLinearGradient(0,0,170,0);
+  // my_gradient.addColorStop(0,"black");
+  // my_gradient.addColorStop(0.5,"red");
+  // my_gradient.addColorStop(1,"white");
+  my_gradient.addColorStop(0,"black");
+  my_gradient.addColorStop("0.2","magenta");
+  my_gradient.addColorStop("0.4","blue");
+  my_gradient.addColorStop("0.6","green");
+  my_gradient.addColorStop("0.8","yellow");
+  my_gradient.addColorStop(1,"red");
+  ctx2.fillStyle = my_gradient;
+  ctx2.fillRect(20,20,150,100);
+
+  // 3.放射状/圆形渐变
+  var c3 = document.getElementById("myCanvas3");
+  var ctx3 = c3.getContext("2d");
+  var grd = ctx3.createRadialGradient(75,50,5,90,60,100);
+  grd.addColorStop(0,"red");
+  grd.addColorStop(1,"white");
+  ctx3.fillStyle = grd;
+  ctx3.fillRect(20,20,150,100);
+
+  // 4.图片
+  function draw(direction) {
+    var c4 = document.getElementById("myCanvas4");
+    var ctx4 = c4.getContext("2d");
+    ctx4.clearRect(0, 0, c4.width, c4.height); 
+    var img = document.getElementById("lamp")
+    var pat = ctx4.createPattern(img, direction);
+    ctx4.rect(0,0,150,100);
+    ctx4.fillStyle = pat;
+    ctx4.fill();
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-strokeStyle</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    
+    <p>1、color(CSS 颜色值): 默认值是 #000000:</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas1" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>2、线性渐变createLinearGradient(x0,y0,x1,y1):</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas2" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>2-1、线性渐变createLinearGradient(x0,y0,x1,y1):</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas21" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <p>3、放射状/圆形渐变createRadialGradient(x0,y0,r0,x1,y1,r1):</p>
+    <p>Canvas:</p>
+    <canvas id="myCanvas3" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  
+  <script type="text/javascript">
+  // 1.颜色
+  var c1 = document.getElementById("myCanvas1");
+  var ctx1 = c1.getContext("2d");
+  ctx1.strokeStyle = "#ff0000";
+  ctx1.strokeRect(20,20,150,100);
+
+  // 2.线性渐变
+  var c2 = document.getElementById("myCanvas2");
+  var ctx2 = c2.getContext("2d");
+  var my_gradient = ctx2.createLinearGradient(0,0,170,0);
+  my_gradient.addColorStop(0,"magenta");
+  my_gradient.addColorStop(0.5,"blue");
+  my_gradient.addColorStop(1,"red");
+  ctx2.strokeStyle = my_gradient;
+  ctx2.lineWidth = 5;
+  ctx2.strokeRect(20,20,150,100);
+
+  // 2-1.线性渐变
+  var c21 = document.getElementById("myCanvas21");
+  var ctx21 = c21.getContext("2d");
+  ctx21.font = "30px Verdana";
+  var gradient = ctx21.createLinearGradient(0, 0, c21.width, 0);
+  gradient.addColorStop(0, "magenta");
+  gradient.addColorStop(0.5, "blue");
+  gradient.addColorStop(1, "red");
+  ctx21.strokeStyle = gradient;
+  ctx21.strokeText("Hello canvas!", 10, 50);
+
+  // 3.放射状/圆形渐变
+  var c3 = document.getElementById("myCanvas3");
+  var ctx3 = c3.getContext("2d");
+  var grd = ctx3.createRadialGradient(75,50,5,90,60,100);
+  grd.addColorStop(0,"magenta");
+  grd.addColorStop(0.5,"blue");
+  grd.addColorStop(1,"red");
+  ctx3.strokeStyle = grd;
+  ctx3.lineWidth = 5;
+  ctx3.strokeRect(20,20,150,100);
+  </script>
+</body>
+</html>

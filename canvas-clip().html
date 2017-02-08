@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-clip()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>原始画布中剪切任意形状和尺寸clip()</p>
+    <p style="color: red;">提示：一旦剪切了某个区域，则所有之后的绘图都会被限制在被剪切的区域内（不能访问画布上的其他区域）。您也可以在使用 clip() 方法前通过使用 save() 方法对当前画布区域进行保存，并在以后的任意时间对其进行恢复（通过 restore() 方法）。</p>
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    // 剪切矩形区域
+    ctx.rect(50,20,200,120);
+    ctx.stroke();
+    ctx.clip();
+
+    // 在 clip() 之后绘制绿色矩形
+    ctx.fillStyle="green";
+    ctx.fillRect(0,0,150,100);
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-bezierCurveTo()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>创建三次贝塞尔曲线bezierCurveTo(cp1x,cp1y,cp2x,cp2y,x,y)</p>
+    <p style="color: red;">提示：三次贝塞尔曲线需要三个点。
+    前两个点是用于三次贝塞尔计算中的控制点，第三个点是曲线的结束点。
+    曲线的开始点是当前路径中最后一个点。如果路径不存在，那么请使用 beginPath() 和 moveTo() 方法来定义开始点。</p>
+    <img src="beziercurve.gif" height="166" width="290">
+    <canvas id="myCanvas" width="300" height="150" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(20, 20);
+    ctx.bezierCurveTo(20,100,200,100,200,20);
+    ctx.stroke();
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-fillText</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>在画布上绘制“被填充的”文本 fillText(text,x,y,maxWidth);</p>
+    <canvas id="myCanvas" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <img src="fillText.jpg" height="183" width="475" alt="">
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.font = "20px Georgia";
+    ctx.fillText("Hello World!", 10, 50);
+    
+    ctx.font = "30px Verdana";
+    // 创建渐变
+    var gradient = ctx.createLinearGradient(0,0,c.width,0);
+    gradient.addColorStop(0, "magenta");
+    gradient.addColorStop(0.5, "blue");
+    gradient.addColorStop(1, "red");
+    // 用渐变填色
+    ctx.fillStyle = gradient;
+    ctx.fillText("w3school.com.cn", 10, 100);
+
+  </script>
+
+</body>
+</html>

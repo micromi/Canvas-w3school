@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>canvas-scale()</title>
+<body>
+  <div style="width: 350px;margin: 0 auto;">
+    <p>缩放当前绘图至更大或更小scale(scalewidth,scaleheight);</p>
+    <p style="color: red;">注释：如果您对绘图进行缩放，所有之后的绘图也会被缩放。
+    定位也会被缩放。如果您 scale(2,2)，那么绘图将定位于距离画布左上角两倍远的位置。</p>
+    <canvas id="myCanvas" width="300" height="170" style="border:1px solid #d3d3d3;">
+      Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+  </div>
+  <script>
+
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.strokeRect(5,5,25,15); // 绘制一个矩形
+    ctx.scale(2,2); // 放大到 200%
+    ctx.strokeRect(5,5,25,15);
+    ctx.scale(2,2); // 再次绘制矩形；放大到 200%
+    ctx.strokeRect(5,5,25,15);
+    ctx.scale(2,2); // 然后再次绘制矩形；放大到 200%
+    ctx.strokeRect(5,5,25,15); // 再次绘制矩形
+
+  </script>
+
+</body>
+</html>
